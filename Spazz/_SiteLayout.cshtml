@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@Page.Title - SPAZZTASTIQ GAMES</title>
+        <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.10.3.js"></script>
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+        <section class="navigation">
+            <div class="nav-container">
+                <div class="brand" style="max-width:300px;">
+                    <a href="~/Default.cshtml">
+
+                        <img src="~/Images/GAME_02_PNG.png" style="max-width:300px; width:80%;" />
+                    </a>
+                </div>
+                <nav>
+                    <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+                    <ul class="nav-list">
+                        <li>
+                            <a href="~/Default.cshtml">Home</a>
+                        </li>
+                        <li>
+                            <a href="~/About.cshtml">About</a>
+                        </li>
+                        <li>
+                            <a href="#!">Games</a>
+                            <ul class="nav-dropdown">
+                                <li>
+                                    <a href="~/ZombieRoadM3.cshtml">Zombie Road M3</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#!">Apps</a>
+                            <ul class="nav-dropdown">
+
+                                <li>
+                                    <a href="#!">????</a>
+                                </li>
+                                <li>
+                                    <a href="#!">????</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="~/Contact.cshtml">Contact</a>
+                            
+                        </li>
+                     
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p style="color:white;">Built with HTML5 and CSS3 copyright &copy; @DateTime.Now.Year - SPAZZTASTIQ GAMES LLC</p>
+                </div>
+            </div>
+        </footer>
+        @RenderSection("Scripts", required: false)
+    </body>
+</html>
+
+
+<script>
+(function ($) { // Begin jQuery
+        $(function () { // DOM ready
+            // If a link has a dropdown, add sub menu toggle.
+            $('nav ul li a:not(:only-child)').click(function (e) {
+                $(this).siblings('.nav-dropdown').toggle();
+                // Close one dropdown when selecting another
+                $('.nav-dropdown').not($(this).siblings()).hide();
+                e.stopPropagation();
+            });
+            // Clicking away from dropdown will remove the dropdown class
+            $('html').click(function () {
+                $('.nav-dropdown').hide();
+            });
+            // Toggle open and close nav styles on click
+            $('#nav-toggle').click(function () {
+                $('nav ul').slideToggle();
+            });
+            // Hamburger to X toggle
+            $('#nav-toggle').on('click', function () {
+                this.classList.toggle('active');
+            });
+        }); // end DOM ready
+    })(jQuery); // end jQuery</script>
